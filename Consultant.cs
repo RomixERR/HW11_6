@@ -14,8 +14,8 @@ namespace HW11_6
         public override string GetClientInfo(int NumberOfClient)
         {
             if (NumberOfClient > GetClientsCount()) return $"Клиета {NumberOfClient} не существует";
-            return $"{clients[NumberOfClient].fio}\n" +
-                   $"{clients[NumberOfClient].phoneNum}\t" +
+            return $"{clients[NumberOfClient].Fio}\n" +
+                   $"{clients[NumberOfClient].PhoneNum}\t" +
                    $"****-********";
         }
 
@@ -23,7 +23,7 @@ namespace HW11_6
         {
             if (NumberOfClient > GetClientsCount()) return;
             if (String.IsNullOrEmpty(phoneNum)) return;
-            clients[NumberOfClient].phoneNum = phoneNum;
+            clients[NumberOfClient].PhoneNum = phoneNum;
         }
     }
 }

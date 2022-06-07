@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 
 namespace HW11_6
 {
-    internal class Manager : EmployerBankA, IConsultant, IManager
-    {
+    //internal class Manager : EmployerBankA, IConsultant, IManager
+    //{
        
-    }
+    //}
 }

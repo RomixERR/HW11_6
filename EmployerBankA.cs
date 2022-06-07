@@ -18,7 +18,7 @@ namespace HW11_6
         }
         public FIO GetClientFio(int NumberOfClient)
         {
-            return clients[NumberOfClient].fio;
+            return clients[NumberOfClient].Fio;
         }
         public EmployerBankA(string pathFileName)
         {
@@ -47,10 +47,22 @@ namespace HW11_6
                 StreamReader streamReader = new StreamReader(pathFileName);
                 clients = (List<Client>)JsonConvert.DeserializeObject(streamReader.ReadToEnd(), typeof(List<Client>));
                 streamReader.Close();
+                foreach (var item in clients)
+                {
+                    item.OnChange += Client_OnChange;
+                    item.OnAfterChange += Item_OnAfterChange;
+                }
             }
             catch (Exception e) { return (false, e.Message); }
             return (true, "OK");
         }
+
+        private void Item_OnAfterChange()
+        {
+            var K = SaveToFile();
+            if (!K.result) Console.WriteLine(K.error);
+        }
+
         /// <summary>
         /// Сохраняет коллекцию клиентов в файл
         /// </summary>
@@ -67,6 +79,10 @@ namespace HW11_6
             }
             catch (Exception e) { return (false, e.Message); }
             return (true, "OK");
+        }
+        private Type Client_OnChange()
+        {
+            return GetType();
         }
         public abstract string GetClientInfo(int NumberOfClient);
     }
