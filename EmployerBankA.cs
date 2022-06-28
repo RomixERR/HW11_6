@@ -113,8 +113,12 @@ namespace HW11_6
     internal interface IManager
     {
         void SetName(int NumberOfClient, string firstName, string lastName, string middleName);
+        void SetLName(int NumberOfClient, string lastName);
+        void SetFName(int NumberOfClient, string firstName);
+        void SetMName(int NumberOfClient, string middleName);
         void SetPasportNum(int NumberOfClient, string pasportNum);
         void AddClient(Client client);
+        void AddClient();
     }
  
 }
