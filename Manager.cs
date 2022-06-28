@@ -49,6 +49,28 @@ namespace HW11_6
             ChangeAndSave(clients[NumberOfClient], this.ToString(), clients[NumberOfClient].Fio.ToString(), "Fio");
         }
 
+        public void SetLName(int NumberOfClient, string lastName)
+        {
+            string firstName = clients[NumberOfClient].Fio.FirstName;
+            //string lastName = clients[NumberOfClient].Fio.LastName;
+            string middleName = clients[NumberOfClient].Fio.MiddleName;
+            SetName(NumberOfClient, firstName, lastName, middleName);
+        }
+        public void SetFName(int NumberOfClient, string firstName)
+        {
+            //string firstName = clients[NumberOfClient].Fio.FirstName;
+            string lastName = clients[NumberOfClient].Fio.LastName;
+            string middleName = clients[NumberOfClient].Fio.MiddleName;
+            SetName(NumberOfClient, firstName, lastName, middleName);
+        }
+        public void SetMName(int NumberOfClient, string middleName)
+        {
+            string firstName = clients[NumberOfClient].Fio.FirstName;
+            string lastName = clients[NumberOfClient].Fio.LastName;
+            //string middleName = clients[NumberOfClient].Fio.MiddleName;
+            SetName(NumberOfClient, firstName, lastName, middleName);
+        }
+
         public void SetPasportNum(int NumberOfClient, string pasportNum)
         {
             clients[NumberOfClient].PasportNum = pasportNum;

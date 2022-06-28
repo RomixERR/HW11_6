@@ -52,54 +52,27 @@ namespace HW11_6
         }
         public static void MItemChangePhoneNumber()
         {
-            ChangeClientStringData(employer, (employer as Consultant).SetPhoneNum, "Введите номер телефона", fakeUser.GetPhone());
-            //int N = Input<int>("Введите порядковый номер клиента");
-            //var K = employer.GetClientInfo(N);
-            //Console.WriteLine(K.outString);
-            //if (K.isExist)
-            //{
-            //    Console.WriteLine("Введите 0 для отмены ввода.");
-            //    string PN = Input<string>("Введите телефон", fakeUser.GetPhone());
-            //    if (PN == "0") return;
-            //    employer.SetPhoneNum(N, PN);
-            //}
-            //else {Console.ReadKey();}
+            ChangeClientStringData(employer, employer.SetPhoneNum, "Введите новый номер телефона", fakeUser.GetPhone());
         }
-        private static void ChangeClientStringData(EmployerBankA employer, Action<int,string> employerAction, string message, string fakeData)
-        {
-            int N = Input<int>("Введите порядковый номер клиента");
-            var K = employer.GetClientInfo(N);
-            Console.WriteLine(K.outString);
-            if (K.isExist)
-            {
-                Console.WriteLine("Введите 0 для отмены ввода.");
-                string PN = Input<string>(message, fakeData);
-                if (PN == "0") return;
-                employerAction(N, PN);
-            }
-            else { Console.ReadKey(); }
-        }
-
-
-
-
+       
         public static void MItemChangePasportNumber()
         {
-            ChangeClientStringData(employer, (employer as Manager).SetPasportNum, "Введите номер паспорта", fakeUser.GetPasport());
+            ChangeClientStringData(employer, (employer as Manager).SetPasportNum, "Введите новый номер паспорта", fakeUser.GetPasport());
         }
 
         public static void MItemChangeLastName()
         {
-
+            ChangeClientStringData(employer, (employer as Manager).SetLName, "Введите новую фамилию", fakeUser.GetLName());
         }
         public static void MItemChangeFirstName()
         {
-
+            ChangeClientStringData(employer, (employer as Manager).SetFName, "Введите новое имя", fakeUser.GetFName());
         }
         public static void MItemChangeMiddleName()
         {
-
+            ChangeClientStringData(employer, (employer as Manager).SetMName, "Введите новое отечество", fakeUser.GetMName());
         }
+
         public static void MItemChangeWife()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -113,6 +86,20 @@ namespace HW11_6
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.Gray;
             mainMenu.showMenu();
+        }
+        private static void ChangeClientStringData(EmployerBankA employer, Action<int, string> employerAction, string message, string fakeData)
+        {
+            int N = Input<int>("Введите порядковый номер клиента");
+            var K = employer.GetClientInfo(N);
+            Console.WriteLine(K.outString);
+            if (K.isExist)
+            {
+                Console.WriteLine("Введите 0 для отмены ввода.");
+                string PN = Input<string>(message, fakeData);
+                if (PN == "0") return;
+                employerAction(N, PN);
+            }
+            else { Console.ReadKey(); }
         }
     }
 }
