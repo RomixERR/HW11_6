@@ -28,6 +28,10 @@ namespace HW11_6
             this.phoneNum = phoneNum;
             this.pasportNum = pasportNum;
         }
+        public Client()
+        {
+
+        }
        
      }
 
