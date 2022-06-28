@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using static HW11_6.InputClass;
 
 namespace HW11_6
 {
@@ -10,28 +12,43 @@ namespace HW11_6
     {
         static void Main(string[] args)
         {
-            //Client client1 = new Client(new FIO { FirstName = "fn1", LastName = "Жоподряблов", MiddleName = "mn1" }, "+799656555", "1804-2222222");
-            //Client client2 = new Client(new FIO { FirstName = "fn2", LastName = "Киргофов", MiddleName = "mn2" }, "+799656556", "1804-2222223");
+            const string pathFileName = "basa.json";
+            bool extFlag = false;
+            EmployerBankA employer;
 
-            //Consultant consultant = new Consultant("basa.json");
-            //Console.WriteLine(consultant.GetClientsCount());
-            //Console.WriteLine(consultant.GetClientInfo(0));
+            int P = Input<int>("Выберете пользователя: Консультант = 1, Менеджер = 2, Выход = 0 (или пустой ввод)", 0 );
+            if (P == 1)
+            {
+                employer = new Consultant(pathFileName);
+            }
+            else if (P == 2)
+            {
+                employer = new Manager(pathFileName);
+            }
+            else return;
 
-            //Manager manager = new Manager("basa.json");
-            //manager.AddClient();
-            //manager.AddClient(client1);
-            //manager.AddClient(client2);
-            //manager.SetPhoneNum(3, "zzzzzzzzzz");
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("====Меню====");
+                Console.WriteLine($"Вы зашли под [{employer}]");
+                Console.WriteLine("============");
+                Console.WriteLine("0 - выход");
+                Console.WriteLine("1 - вывести данные на экран");
+                Console.WriteLine("2 - добавить новую запись");
+                Console.WriteLine("3 - изменить Фамилию");
+                Console.WriteLine("4 - изменить Имя");
+                Console.WriteLine("5 - изменить Отчество");
+                Console.WriteLine("6 - изменить Телефон");
+                Console.WriteLine("7 - изменить жене");
+                Console.WriteLine("8 - изменить Номер паспорта");
 
-            Consultant consultant = new Consultant("basa.json");
-            //consultant.SetPhoneNum(1, "fffff");
+                P = Input<int>();
+                if (P == 0) break;
+            }
 
-            Console.WriteLine(consultant.GetClientsInfo());
-
-            Console.ReadKey();
-            
-
-
+            Console.WriteLine("Спасибо за использование программы нашего банка!");
+            Thread.Sleep(2000);
         }
 
         

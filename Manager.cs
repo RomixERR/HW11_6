@@ -17,7 +17,7 @@ namespace HW11_6
         public void AddClient(Client client)
         {
             clients.Add(client);
-            ChangeAndSave(client, this.GetType().Name, client.Fio.FirstName, "Add new");
+            ChangeAndSave(client, this.ToString(), client.Fio.FirstName, "Add new");
         }
 
         public void AddClient()
@@ -41,15 +41,19 @@ namespace HW11_6
         public void SetName(int NumberOfClient, string firstName, string lastName, string middleName)
         {
             clients[NumberOfClient].Fio = new FIO() { FirstName=firstName, LastName = lastName, MiddleName = middleName};
-            ChangeAndSave(clients[NumberOfClient], this.GetType().Name, clients[NumberOfClient].Fio.ToString(), "Fio");
+            ChangeAndSave(clients[NumberOfClient], this.ToString(), clients[NumberOfClient].Fio.ToString(), "Fio");
         }
 
         public void SetPasportNum(int NumberOfClient, string pasportNum)
         {
             clients[NumberOfClient].PasportNum = pasportNum;
-            ChangeAndSave(clients[NumberOfClient], this.GetType().Name, clients[NumberOfClient].PasportNum.ToString(), "pasportNum");
+            ChangeAndSave(clients[NumberOfClient], this.ToString(), clients[NumberOfClient].PasportNum.ToString(), "pasportNum");
         }
 
- 
+        public override string ToString()
+        {
+            return "Менеджер";
+        }
+
     }
 }

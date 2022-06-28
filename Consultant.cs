@@ -18,7 +18,11 @@ namespace HW11_6
                   $"{client.PhoneNum}\t" +
                   $"****-********";
         }
+        public override string ToString()
+        {
+            return "Консультант";
+        }
 
-
+ 
     }
 }

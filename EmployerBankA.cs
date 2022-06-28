@@ -87,7 +87,7 @@ namespace HW11_6
             if (NumberOfClient > GetClientsCount()) return;
             if (String.IsNullOrEmpty(phoneNum)) return;
             clients[NumberOfClient].PhoneNum = phoneNum;
-            ChangeAndSave(clients[NumberOfClient], this.GetType().Name, phoneNum, "phoneNum");
+            ChangeAndSave(clients[NumberOfClient], this.ToString(), phoneNum, "phoneNum");
         }
 
         public string GetClientInfo(int NumberOfClient)
