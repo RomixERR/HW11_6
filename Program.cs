@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static HW11_6.InputClass;
 using SimpleCMenu.Menu;
+using FakeUsersLite;
 
 namespace HW11_6
 {
@@ -15,6 +16,7 @@ namespace HW11_6
         static EmployerBankA employer;
         static ConsoleMenu firstMenu = new ConsoleMenu();
         static ConsoleMenu mainMenu = new ConsoleMenu();
+        static FakeUser fakeUser = new FakeUser();
         static void Main(string[] args)
         {
             firstMenu.SubTitle = "Выберете пользователя";
@@ -48,7 +50,7 @@ namespace HW11_6
                     mainMenu.addMenuItem(0, "вывести данные на экран", MItemPrint);
                     mainMenu.addMenuItem(1, "изменить Телефон", MItemChangePhoneNumber);
                 }
-                firstMenu.addMenuItem(8, "Выход", MItemExit);
+                mainMenu.addMenuItem(8, "Выход", MItemExit);
                 mainMenu.showMenu();
             }
         }

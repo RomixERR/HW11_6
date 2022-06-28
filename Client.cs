@@ -51,7 +51,8 @@ namespace HW11_6
         public string MiddleName;
         public override string ToString()
         {
-            return $"Имя: {FirstName}, Фамилия: {LastName}, Отчество: {MiddleName}";
+            //return $"Имя: {FirstName}, Фамилия: {LastName}, Отчество: {MiddleName}";
+            return $"{FirstName} {LastName} {MiddleName}";
         }
     }
 }

@@ -90,18 +90,19 @@ namespace HW11_6
             ChangeAndSave(clients[NumberOfClient], this.ToString(), phoneNum, "phoneNum");
         }
 
-        public string GetClientInfo(int NumberOfClient)
+        public (string outString, bool isExist) GetClientInfo(int NumberOfClient)
         {
-            if (NumberOfClient > GetClientsCount()) return $"Клиета {NumberOfClient} не существует";
-            return GetClientInfo(clients[NumberOfClient]);
+            if (NumberOfClient > GetClientsCount()) return ($"Клиета {NumberOfClient} не существует", false);
+            return (GetClientInfo(clients[NumberOfClient]),true);
         }
         public abstract string GetClientInfo(Client client);
         public string GetClientsInfo()
         {
             string result = string.Empty;
+            int i = 0;
             foreach (var item in clients)
 	        {
-                result += GetClientInfo(item) + "\n";
+                result = $"{result}#{i++,-4} {GetClientInfo(item)}\n";
 	        }
             return result;
         }
