@@ -92,7 +92,7 @@ namespace HW11_6
 
         public (string outString, bool isExist) GetClientInfo(int NumberOfClient)
         {
-            if (NumberOfClient > GetClientsCount()) return ($"Клиета {NumberOfClient} не существует", false);
+            if (NumberOfClient >= GetClientsCount()) return ($"Клиета {NumberOfClient} не существует", false);
             return (GetClientInfo(clients[NumberOfClient]),true);
         }
         public abstract string GetClientInfo(Client client);
