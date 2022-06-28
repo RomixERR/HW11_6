@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Consultant.cs" />
     <Compile Include="EmployerBankA.cs" />
+    <Compile Include="InputClass.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

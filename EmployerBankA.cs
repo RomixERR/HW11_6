@@ -41,35 +41,35 @@ namespace HW11_6
         /// <returns></returns>
         public (bool result, string error) LoadFromFile()
         {
-            List<Client> clients;
+            clients = new List<Client>();
             try
             {
                 StreamReader streamReader = new StreamReader(pathFileName);
                 clients = (List<Client>)JsonConvert.DeserializeObject(streamReader.ReadToEnd(), typeof(List<Client>));
                 streamReader.Close();
-                foreach (var item in clients)
-                {
-                    item.OnChange += Client_OnChange;
-                    item.OnAfterChange += Item_OnAfterChange;
-                }
+
             }
             catch (Exception e) { return (false, e.Message); }
             return (true, "OK");
         }
 
-        private void Item_OnAfterChange()
+        protected void ChangeAndSave(Client client, string WhoIsChange, string WhatDataIsChange, string TypeDataChange)
         {
-            var K = SaveToFile();
-            if (!K.result) Console.WriteLine(K.error);
+            DateTime dateTime = DateTime.Now;
+            client.WhoIsChange = WhoIsChange;
+            client.WhatDataIsChange = WhatDataIsChange;
+            client.dateTime = dateTime;
+            client.TypeDataChange = TypeDataChange;
+            SaveToFile();
         }
-
+  
         /// <summary>
         /// Сохраняет коллекцию клиентов в файл
         /// </summary>
         /// <param name="pathFileName"></param>
         /// <param name="clients"></param>
         /// <returns></returns>
-        public (bool result, string error) SaveToFile()
+        protected (bool result, string error) SaveToFile()
         {
             try
             {
@@ -80,22 +80,40 @@ namespace HW11_6
             catch (Exception e) { return (false, e.Message); }
             return (true, "OK");
         }
-        private Type Client_OnChange()
+ 
+
+        public void SetPhoneNum(int NumberOfClient, string phoneNum)
         {
-            return GetType();
+            if (NumberOfClient > GetClientsCount()) return;
+            if (String.IsNullOrEmpty(phoneNum)) return;
+            clients[NumberOfClient].PhoneNum = phoneNum;
+            ChangeAndSave(clients[NumberOfClient], this.GetType().Name, phoneNum, "phoneNum");
         }
-        public abstract string GetClientInfo(int NumberOfClient);
+
+        public string GetClientInfo(int NumberOfClient)
+        {
+            if (NumberOfClient > GetClientsCount()) return $"Клиета {NumberOfClient} не существует";
+            return GetClientInfo(clients[NumberOfClient]);
+        }
+        public abstract string GetClientInfo(Client client);
+        public string GetClientsInfo()
+        {
+            string result = string.Empty;
+            foreach (var item in clients)
+	        {
+                result += GetClientInfo(item) + "\n";
+	        }
+            return result;
+        }
     }
 
-    internal interface IConsultant
-    {
-        void SetPhoneNum(int NumberOfClient, string phoneNum);
-    }
+
 
     internal interface IManager
     {
         void SetName(int NumberOfClient, string firstName, string lastName, string middleName);
         void SetPasportNum(int NumberOfClient, string pasportNum);
+        void AddClient(Client client);
     }
  
 }

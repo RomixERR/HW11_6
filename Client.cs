@@ -10,10 +10,6 @@ namespace HW11_6
 {
     internal class Client
     {
-        public delegate Type OnChangeDelegate();
-        public delegate void OnAfterChangeDelegate();
-        public event OnChangeDelegate OnChange;
-        public event OnAfterChangeDelegate OnAfterChange; 
         private FIO fio;
         private string phoneNum;
         private string pasportNum;
@@ -22,9 +18,9 @@ namespace HW11_6
         public string TypeDataChange;
         public string WhoIsChange;
 
-        public FIO Fio { get { return fio; } set { Change(fio, value); fio = value; } }
-        public string PhoneNum { get { return phoneNum; } set { Change(phoneNum, value); phoneNum = value; } }
-        public string PasportNum { get { return pasportNum; } set { Change(pasportNum, value); pasportNum = value; } }
+        public FIO Fio { get { return fio; } set { fio = value; } }
+        public string PhoneNum { get { return phoneNum; } set { phoneNum = value; } }
+        public string PasportNum { get { return pasportNum; } set { pasportNum = value; } }
 
         public Client(FIO name, string phoneNum, string pasportNum)
         {
@@ -32,15 +28,7 @@ namespace HW11_6
             this.phoneNum = phoneNum;
             this.pasportNum = pasportNum;
         }
-        private void Change(Object od, Object nw)
-        {
-            WhoIsChange = OnChange().Name;
-            WhatDataIsChange = nw.GetType().Name;
-            dateTime = DateTime.Now;
-            if (od == null) TypeDataChange = "Новая запись";
-            else TypeDataChange = "Изменение";
-            OnAfterChange();
-        }
+       
      }
 
 

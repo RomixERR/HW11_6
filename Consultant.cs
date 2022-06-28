@@ -7,23 +7,18 @@ using Newtonsoft.Json;
 
 namespace HW11_6
 {
-    internal class Consultant : EmployerBankA , IConsultant
+    internal class Consultant : EmployerBankA
     {
         public Consultant (string pathFileName): base (pathFileName) {}
 
-        public override string GetClientInfo(int NumberOfClient)
+
+        public override string GetClientInfo(Client client)
         {
-            if (NumberOfClient > GetClientsCount()) return $"Клиета {NumberOfClient} не существует";
-            return $"{clients[NumberOfClient].Fio}\n" +
-                   $"{clients[NumberOfClient].PhoneNum}\t" +
-                   $"****-********";
+            return $"{client.Fio}\n" +
+                  $"{client.PhoneNum}\t" +
+                  $"****-********";
         }
 
-        public void SetPhoneNum(int NumberOfClient, string phoneNum)
-        {
-            if (NumberOfClient > GetClientsCount()) return;
-            if (String.IsNullOrEmpty(phoneNum)) return;
-            clients[NumberOfClient].PhoneNum = phoneNum;
-        }
+
     }
 }
