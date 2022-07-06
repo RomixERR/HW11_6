@@ -50,6 +50,7 @@
     <Compile Include="ConsoleMenu.cs" />
     <Compile Include="Consultant.cs" />
     <Compile Include="EmployerBankA.cs" />
+    <Compile Include="EmployerBankA_Interface.cs" />
     <Compile Include="FakeUser.cs" />
     <Compile Include="FakeUserDataset.cs" />
     <Compile Include="InputClass.cs" />

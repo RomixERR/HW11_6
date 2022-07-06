@@ -7,25 +7,16 @@ using Newtonsoft.Json;
 
 namespace HW11_6
 {
-    internal class Consultant : EmployerBankA
+    internal class Consultant : EmployerBankA, IConsultant
     {
         public Consultant (string pathFileName): base (pathFileName) {}
-
-
         public override string GetClientInfo(Client client)
         {
-            //return $"{client.Fio}\n" +
-            //      $"{client.PhoneNum}\t" +
-            //      $"****-********";
             return  $"Name:\t{client.Fio,-35}\t" +
                     $"Phone:\t{client.PhoneNum,-18}\t" +
                     $"Pasport:\t****-******";
         }
-        public override string ToString()
-        {
-            return "Консультант";
-        }
-
- 
+        public override string ToString() => "Консультант";
+        public override void SetPhoneNum(int NumberOfClient, string phoneNum) => base.SetPhoneNumRet(NumberOfClient, phoneNum);        
     }
 }

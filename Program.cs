@@ -53,6 +53,7 @@ namespace HW11_6
                 {
                     mainMenu.addMenuItem(0, "вывести данные на экран", MItemPrint);
                     mainMenu.addMenuItem(1, "изменить Телефон", MItemChangePhoneNumber);
+                    mainMenu.addMenuItem(2, "Изменить номер паспорта", MItemChangePasportNumber);//
                 }
                 mainMenu.addMenuItem(8, "Выход", MItemExit);
                 mainMenu.showMenu();

@@ -43,34 +43,34 @@ namespace HW11_6
             client.Fio = fio;
             client.PhoneNum = Input<string>("Введите телефон", fakeUser.GetPhone());
             client.PasportNum = Input<string>("Введите паспорт", fakeUser.GetPasport());
-            (employer as Manager).GetClientInfo(client);
+            employer.GetClientInfo(client);
 
             string K = (Input<string>("Вы подтверждаете данные?  Y или Д - для подтверждения, любой символ для отказа!")).ToUpper();
 
             if (!(K == "Y" || K == "Д")) return;
-            (employer as Manager).AddClient(client);
+            employer.AddClient(client);
         }
         public static void MItemChangePhoneNumber()
         {
-            ChangeClientStringData(employer, employer.SetPhoneNum, "Введите новый номер телефона", fakeUser.GetPhone());
+            ChangeClientStringData(employer,  employer.SetPhoneNum , "Введите новый номер телефона", fakeUser.GetPhone());
         }
        
         public static void MItemChangePasportNumber()
         {
-            ChangeClientStringData(employer, (employer as Manager).SetPasportNum, "Введите новый номер паспорта", fakeUser.GetPasport());
+            ChangeClientStringData(employer, employer.SetPasportNum, "Введите новый номер паспорта", fakeUser.GetPasport());
         }
 
         public static void MItemChangeLastName()
         {
-            ChangeClientStringData(employer, (employer as Manager).SetLName, "Введите новую фамилию", fakeUser.GetLName());
+            ChangeClientStringData(employer, employer.SetLName, "Введите новую фамилию", fakeUser.GetLName());
         }
         public static void MItemChangeFirstName()
         {
-            ChangeClientStringData(employer, (employer as Manager).SetFName, "Введите новое имя", fakeUser.GetFName());
+            ChangeClientStringData(employer, employer.SetFName, "Введите новое имя", fakeUser.GetFName());
         }
         public static void MItemChangeMiddleName()
         {
-            ChangeClientStringData(employer, (employer as Manager).SetMName, "Введите новое отечество", fakeUser.GetMName());
+            ChangeClientStringData(employer, employer.SetMName, "Введите новое отечество", fakeUser.GetMName());
         }
 
         public static void MItemChangeWife()

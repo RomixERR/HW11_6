@@ -10,77 +10,21 @@ namespace HW11_6
 {
     internal class Manager : EmployerBankA, IManager
     {
-
-        public Manager(string pathFileName) : base(pathFileName)
-        {
-        }
-
-        public void AddClient(Client client)
-        {
-            clients.Add(client);
-            ChangeAndSave(client, this.ToString(), client.Fio.FirstName, "Add new");
-        }
-
-        public void AddClient()
-        {
-            FakeUser fakeUser = new FakeUser();
-            Client client = new Client(new FIO { FirstName = fakeUser.GetFName(), LastName = fakeUser.GetLName(), MiddleName = fakeUser.GetMName() },
-                fakeUser.GetPhone(),
-                fakeUser.GetPasport()
-                );
-            AddClient(client);
-        }
-        //public override string GetClientInfo(Client client)
-        //{
-        //    return $"{client.Fio}\n" +
-        //          $"{client.PhoneNum}\t" +
-        //          $"{client.PasportNum}";
-        //}
+        public Manager(string pathFileName) : base(pathFileName)  {}
         public override string GetClientInfo(Client client)
         {
             return $"Name:\t{client.Fio,-35}\t" +
                    $"Phone:\t{client.PhoneNum,-18}\t" +
                    $"Pasport:\t{client.PasportNum}";
         }
-
-        public void SetName(int NumberOfClient, string firstName, string lastName, string middleName)
-        {
-            clients[NumberOfClient].Fio = new FIO() { FirstName=firstName, LastName = lastName, MiddleName = middleName};
-            ChangeAndSave(clients[NumberOfClient], this.ToString(), clients[NumberOfClient].Fio.ToString(), "Fio");
-        }
-
-        public void SetLName(int NumberOfClient, string lastName)
-        {
-            string firstName = clients[NumberOfClient].Fio.FirstName;
-            //string lastName = clients[NumberOfClient].Fio.LastName;
-            string middleName = clients[NumberOfClient].Fio.MiddleName;
-            SetName(NumberOfClient, firstName, lastName, middleName);
-        }
-        public void SetFName(int NumberOfClient, string firstName)
-        {
-            //string firstName = clients[NumberOfClient].Fio.FirstName;
-            string lastName = clients[NumberOfClient].Fio.LastName;
-            string middleName = clients[NumberOfClient].Fio.MiddleName;
-            SetName(NumberOfClient, firstName, lastName, middleName);
-        }
-        public void SetMName(int NumberOfClient, string middleName)
-        {
-            string firstName = clients[NumberOfClient].Fio.FirstName;
-            string lastName = clients[NumberOfClient].Fio.LastName;
-            //string middleName = clients[NumberOfClient].Fio.MiddleName;
-            SetName(NumberOfClient, firstName, lastName, middleName);
-        }
-
-        public void SetPasportNum(int NumberOfClient, string pasportNum)
-        {
-            clients[NumberOfClient].PasportNum = pasportNum;
-            ChangeAndSave(clients[NumberOfClient], this.ToString(), clients[NumberOfClient].PasportNum.ToString(), "pasportNum");
-        }
-
-        public override string ToString()
-        {
-            return "Менеджер";
-        }
-
+        public override string ToString() => "Менеджер";
+        public override void AddClient(Client client) => base.AddClientRet(client);
+        public override void AddClient() => base.AddClientRet();
+        public override void SetFName(int NumberOfClient, string firstName) => base.SetFNameRet(NumberOfClient, firstName);
+        public override void SetLName(int NumberOfClient, string lastName) => base.SetLNameRet(NumberOfClient, lastName);
+        public override void SetMName(int NumberOfClient, string middleName) => base.SetMNameRet(NumberOfClient, middleName);
+        public override void SetName(int NumberOfClient, string firstName, string lastName, string middleName) => base.SetNameRet(NumberOfClient, firstName, lastName, middleName);
+        public override void SetPasportNum(int NumberOfClient, string pasportNum) => base.SetPasportNumRet(NumberOfClient, pasportNum);
+        public override void SetPhoneNum(int NumberOfClient, string phoneNum) => base.SetPhoneNumRet(NumberOfClient, phoneNum);    
     }
 }

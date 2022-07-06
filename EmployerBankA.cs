@@ -8,7 +8,7 @@ using System.IO;
 
 namespace HW11_6
 {
-    internal abstract class EmployerBankA
+    internal abstract partial class EmployerBankA
     {
         protected List<Client> clients;
         protected string pathFileName;
@@ -62,7 +62,7 @@ namespace HW11_6
             client.TypeDataChange = TypeDataChange;
             SaveToFile();
         }
-  
+
         /// <summary>
         /// Сохраняет коллекцию клиентов в файл
         /// </summary>
@@ -79,15 +79,6 @@ namespace HW11_6
             }
             catch (Exception e) { return (false, e.Message); }
             return (true, "OK");
-        }
- 
-
-        public void SetPhoneNum(int NumberOfClient, string phoneNum)
-        {
-            if (NumberOfClient > GetClientsCount()) return;
-            if (String.IsNullOrEmpty(phoneNum)) return;
-            clients[NumberOfClient].PhoneNum = phoneNum;
-            ChangeAndSave(clients[NumberOfClient], this.ToString(), phoneNum, "phoneNum");
         }
 
         public (string outString, bool isExist) GetClientInfo(int NumberOfClient)
@@ -106,19 +97,10 @@ namespace HW11_6
 	        }
             return result;
         }
-    }
+        //public Type GetType()
+        //{
+        //    return this.GetType();
+        //}
 
-
-
-    internal interface IManager
-    {
-        void SetName(int NumberOfClient, string firstName, string lastName, string middleName);
-        void SetLName(int NumberOfClient, string lastName);
-        void SetFName(int NumberOfClient, string firstName);
-        void SetMName(int NumberOfClient, string middleName);
-        void SetPasportNum(int NumberOfClient, string pasportNum);
-        void AddClient(Client client);
-        void AddClient();
-    }
- 
-}
+    }  
+ }
