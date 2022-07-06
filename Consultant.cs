@@ -17,6 +17,16 @@ namespace HW11_6
                     $"Pasport:\t****-******";
         }
         public override string ToString() => "Консультант";
-        public override void SetPhoneNum(int NumberOfClient, string phoneNum) => base.SetPhoneNumRet(NumberOfClient, phoneNum);        
+        public override void SetPhoneNum(int NumberOfClient, string phoneNum) => base.SetPhoneNumRet(NumberOfClient, phoneNum);
+
+        public override List<Client> GetClients()
+        {
+            List<Client> newCl = new List<Client>(Filter());
+            foreach (Client item in newCl)
+            {
+                item.PasportNum = "****-******";
+            }
+            return newCl;
+        }
     }
 }

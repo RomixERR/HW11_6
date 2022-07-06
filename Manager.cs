@@ -25,6 +25,12 @@ namespace HW11_6
         public override void SetMName(int NumberOfClient, string middleName) => base.SetMNameRet(NumberOfClient, middleName);
         public override void SetName(int NumberOfClient, string firstName, string lastName, string middleName) => base.SetNameRet(NumberOfClient, firstName, lastName, middleName);
         public override void SetPasportNum(int NumberOfClient, string pasportNum) => base.SetPasportNumRet(NumberOfClient, pasportNum);
-        public override void SetPhoneNum(int NumberOfClient, string phoneNum) => base.SetPhoneNumRet(NumberOfClient, phoneNum);    
+        public override void SetPhoneNum(int NumberOfClient, string phoneNum) => base.SetPhoneNumRet(NumberOfClient, phoneNum);
+
+        public override List<Client> GetClients()
+        {
+            List<Client> newCl = new List<Client>(Filter());
+            return newCl;
+        }
     }
 }

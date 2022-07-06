@@ -80,7 +80,6 @@ namespace HW11_6
             catch (Exception e) { return (false, e.Message); }
             return (true, "OK");
         }
-
         public (string outString, bool isExist) GetClientInfo(int NumberOfClient)
         {
             if (NumberOfClient >= GetClientsCount()) return ($"Клиета {NumberOfClient} не существует", false);
@@ -97,10 +96,10 @@ namespace HW11_6
 	        }
             return result;
         }
-        //public Type GetType()
-        //{
-        //    return this.GetType();
-        //}
-
+        public abstract List<Client> GetClients();
+        protected List<Client> Filter()
+        {
+            return new List<Client>(clients);  /// СДЕЛАТЬ ФИЛЬТР
+        }
     }  
  }
