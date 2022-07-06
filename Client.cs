@@ -32,7 +32,7 @@ namespace HW11_6
      }
 
 
-    internal struct FIO
+    internal class FIO
     {   /// <summary>
         /// Имя
         /// </summary>
